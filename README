@@ -1,0 +1,31 @@
+ I. Student name: Junquan Yu
+
+II. Student ID:3372029142
+
+III. what I have done in the assignment:
+	In this socket project, i successfully wrote all the source code by myself. After debugging, i moved all my .cpp files to the same folder and tested them with the "Makefile" file. The program works as expected and implemented all the functionalities as required.
+
+IV. what your code file are and what each one of them does
+	a. client.cpp: send the link ID, file size and power, which are input from the command line, to AWS server and receive end-to-end delay from AWS server.
+	b. monitor.cpp: receive the link ID, file size and power from the AWS Server and print them; receive the final results from the AWS Server and print them.
+	c. aws.cpp: receive link ID, size and power from client; send link id to Server A and B; get search results from Server A and B; send all the necessary information to Sever C; get the feedback from server C; send the final results to monitor and client respectively.	
+	d. serverA.cpp: receive the link ID from AWS server; send the search result, which is the detailed information about this specified link, to the AWS Server.
+	e. serverB.cpp: receive the link ID from AWS server; send the search result, which is the detailed information about this specified link, to the AWS Server.
+	f. serverC.cpp: receive the detailed link information from AWS Server; calculate the transmission delay, propagation delay and end-to-end delay based on all the information received from the AWS Server; send the final results to the AWS Server.
+
+V.the format of all the message 
+    a. Client sends link ID (double), file size (double) and signal power (double) to the AWS Server.
+	b. AWS Server sends link ID (double) to the Server A; Server A sends fa (bool) to the AWS Server. If the return value of the subfunction search_data() is 0, then Server A sends the flag (bool), bandwidth (double), length (double), velocity (double) and noise power (double) to the AWS. If the return value of the subfunction search_data() is 1, Server A just sends the flag (bool) to the AWS.
+	c. AWS Server sends link ID (double) to the Server B; Server B sends fa (bool) to the AWS Server. If the return value of the subfunction search_data() is 0, then Server B sends the flag (bool), bandwidth (double), length (double), velocity (double) and noise power (double) to the AWS. If the return value of the subfunction search_data() is 1, Server B just sends the flag (bool) to the AWS.	
+	d. If there are no matches for the given link ID, AWS just sends the flag (bool) to the client, monitor and Server C.
+	e. If one match is found by either Server A or Server B, AWS Server sends the link ID (double), file size (double), signal power (double), flag (bool), bandwidth (double), length (double), velocity (double) and noise power (double) to Server C; Server C sends the transmission delay (double), propagation delay (double) and end-to-end delay (double) to AWS Server; AWS Server sends the end-to-end delay (double) to the client and all these three delays (double) to the monitor.
+
+VI. the idiosyncrasy:	
+	a. Remember naming the two database files as "database_a.csv" and "database_b.csv", or my program cannot find the file.
+
+VII. Reused code:
+    a. I referred to the webpage: https://www.youtube.com/watch?v=LtXEMwSG5-8 and webpage: https://www.youtube.com/watch?v=Emuw71lozdA in terms of how to establish the TCP and UDP connection.
+	b. The source code for subfunction search_data() is reused from the webpage https://www.cnblogs.com/chenzhefan/p/5314516.html.
+
+
+	 
